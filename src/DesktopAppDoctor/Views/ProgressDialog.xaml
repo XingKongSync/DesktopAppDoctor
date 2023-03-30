@@ -1,0 +1,39 @@
+﻿<Window x:Class="DesktopAppDoctor.Views.ProgressDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopAppDoctor.Views"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:ProgressDialogVM}"
+        xmlns:vm="clr-namespace:DesktopAppDoctor.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ShowInTaskbar="False"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        Title="{Binding Title}" Height="200" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Window.DataContext>
+        <vm:ProgressDialogVM x:Name="ViewModel"/>
+    </Window.DataContext>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Content}" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 10"/>
+        <TextBlock Text="{Binding Content2}" Grid.Row="2" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0 0 0 10"/>
+        <ProgressBar Grid.Row="3" IsIndeterminate="{Binding IsIndeterminate}" Height="10" Margin="0 0 0 10"/>
+        <Button Grid.Row="4" Content="{Binding CancelButtonContent}" Height="35" Width="80" Click="CancelButton_Click" />
+    </Grid>
+</Window>
